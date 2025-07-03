@@ -1,14 +1,25 @@
 window.onload=()=>{
 creategrid(5);
 };
+let mode="hover";
 let res=document.getElementById("reset");
 let pop=document.getElementById("popup");
 let col=document.getElementById("picker");
-let Rainbow=document.getElementById("rainbow");
+
 let clic=document.getElementById("clis");
 res.addEventListener("click",()=>{
 pop.style.display="flex";
 });
+clic.addEventListener("click",()=>{
+    if(mode==="hover"){
+        mode="click";
+        clic.innerHTML=`🖱️<br><br>On Hover`;
+    }
+    else if(mode==="click"){
+        mode="hover";
+        clic.innerHTML=`🖱️<br><br>On click`;
+    }
+})
 function grid(){
     let size=parseInt(document.getElementById("int").value);
     if(size>=1 && size<=100){
@@ -38,7 +49,10 @@ function creategrid(size){
         div.style.width="100%";
         div.style.height="100%";
         div.addEventListener("mouseover",()=>{
-            div.style.backgroundColor="black";
+            if(mode==="hover")div.style.backgroundColor='black';
+        })
+         div.addEventListener("click",()=>{
+            if(mode==="click")div.style.backgroundColor="black";
         })
         gri.appendChild(div);
     }
