@@ -1,5 +1,5 @@
 body{
-    background-color:#290025;
+    background-color:#142133;
     color: whitesmoke;
 }
 .logo{
@@ -44,7 +44,8 @@ body{
     font-size: 80px;
     font-weight: bold;
     margin: 2px;
-    color: #007621;
+    color:chocolate;
+    margin-left: 140px;
 }
 #sidepanal{
     width:100px;

@@ -1,15 +1,22 @@
+
 window.onload=()=>{
 creategrid(5);
 };
+
 let mode="hover";
+let color="#000000";
+let colormode="default";
 let res=document.getElementById("reset");
 let pop=document.getElementById("popup");
 let col=document.getElementById("picker");
-
 let clic=document.getElementById("clis");
+let ers=document.getElementById("eraser");
+let Rainbow=document.getElementById("rainbow");
+
 res.addEventListener("click",()=>{
 pop.style.display="flex";
 });
+
 clic.addEventListener("click",()=>{
     if(mode==="hover"){
         mode="click";
@@ -20,6 +27,26 @@ clic.addEventListener("click",()=>{
         clic.innerHTML=`🖱️<br><br>On click`;
     }
 })
+
+Rainbow.addEventListener("click",()=>{
+    colormode="rainbow";
+})
+
+ers.addEventListener("click",()=>{
+    colormode="eraser";
+})
+
+function colorpick(colormode){
+    if(colormode==="rainbow"){
+        return "#"+Math.floor(Math.random()*16777215).toString(16);
+    }
+    else if(colormode==="eraser"){
+        return "white";
+    }
+    else{
+        return "black";
+    }
+}
 function grid(){
     let size=parseInt(document.getElementById("int").value);
     if(size>=1 && size<=100){
@@ -31,6 +58,7 @@ function grid(){
     }
  document.getElementById("int").value="";
 }
+
 
 function creategrid(size){
     let gri=document.getElementById("grid");
@@ -49,10 +77,16 @@ function creategrid(size){
         div.style.width="100%";
         div.style.height="100%";
         div.addEventListener("mouseover",()=>{
-            if(mode==="hover")div.style.backgroundColor='black';
+            if(mode==="hover"){
+                div.style.backgroundColor=colorpick(colormode);
+                col.style.backgroundColor=colorpick(colormode);
+            }
         })
          div.addEventListener("click",()=>{
-            if(mode==="click")div.style.backgroundColor="black";
+            if(mode==="click"){
+                div.style.backgroundColor=colorpick(colormode);
+                col.style.backgroundColor=colorpick(colormode);
+            }
         })
         gri.appendChild(div);
     }
