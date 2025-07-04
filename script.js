@@ -1,4 +1,3 @@
-
 window.onload=()=>{
 creategrid(5);
 };
@@ -6,22 +5,13 @@ creategrid(5);
 let mode="hover";
 let color="#000000";
 let colormode="default";
-let res=document.getElementById("reset");
+let rest=document.getElementById("reset");
 let pop=document.getElementById("popup");
 let col=document.getElementById("picker");
 let clic=document.getElementById("clis");
 let ers=document.getElementById("eraser");
 let Rainbow=document.getElementById("rainbow");
 
-res.addEventListener("click",()=>{
-pop.style.display="flex";
-});
-
-col.addEventListener("input", (e) => {
-    color = e.target.value;     
-    colormode = "custom";       
-    col.style.backgroundColor = color;  
-});
 
 clic.addEventListener("click",()=>{
     if(mode==="hover"){
@@ -33,37 +23,38 @@ clic.addEventListener("click",()=>{
         clic.innerHTML=`🖱️<br><br>On click`;
     }
 })
-ers.addEventListener("click",()=>{
-    colormode="eraser";
-})
 
 Rainbow.addEventListener("click",()=>{
-    if(colormode==="default"||colormode==="eraser"){
+    if(colormode==="default"){
         colormode="rainbow"
         Rainbow.innerHTML=`🌈<br><br>Switch to Black`;
     }
-    else if(colormode==="rainbow"||colormode=="eraser"){
+    else if(colormode==="rainbow"){
         colormode="default";
         Rainbow.innerHTML=`🖤<br><br> Switch to Rainbow`;
     }
+    else if(colormode==="eraser"){
+        colormode="default";
+        Rainbow.innerHTML=`🖤<br><br>Switch to Rainbow`;
+    }
 })
 
+ers.addEventListener("click",()=>{
+    colormode="eraser";
+    Rainbow.innerHTML=`🤍<br><br>Switch to black`;
+   
+})
 
+rest.addEventListener("click",()=>{
+pop.style.display="flex";
+});
 
-function colorpick(colormode){
-    if(colormode==="rainbow"){
-        return "#"+Math.floor(Math.random()*16777215).toString(16);
-    }
-    else if(colormode==="eraser"){
-        return "white";
-    }
-    else if(colormode === "custom"){
-        return color;  
-    }
-    else{
-        return "black";
-    }
-}
+col.addEventListener("input", (e) => {
+    color = e.target.value;     
+    colormode = "custom";       
+    col.style.backgroundColor = color;  
+});
+
 function grid(){
     let size=parseInt(document.getElementById("int").value);
     if(size>=1 && size<=100){
@@ -75,7 +66,6 @@ function grid(){
     }
  document.getElementById("int").value="";
 }
-
 
 function creategrid(size){
     let gri=document.getElementById("grid");
@@ -108,5 +98,24 @@ function creategrid(size){
         gri.appendChild(div);
     }
 }
+
+function colorpick(colormode){
+    if(colormode==="rainbow"){
+        return "#"+Math.floor(Math.random()*16777215).toString(16);
+    }
+    else if(colormode==="eraser"){
+        return "white";
+    }
+    else if(colormode === "custom"){
+        return color;  
+    }
+    else{
+        return "black";
+    }
+}
+
+
+
+
 
 
