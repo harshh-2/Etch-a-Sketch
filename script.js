@@ -17,6 +17,12 @@ res.addEventListener("click",()=>{
 pop.style.display="flex";
 });
 
+col.addEventListener("input", (e) => {
+    color = e.target.value;     
+    colormode = "custom";       
+    col.style.backgroundColor = color;  
+});
+
 clic.addEventListener("click",()=>{
     if(mode==="hover"){
         mode="click";
@@ -27,14 +33,22 @@ clic.addEventListener("click",()=>{
         clic.innerHTML=`🖱️<br><br>On click`;
     }
 })
-
-Rainbow.addEventListener("click",()=>{
-    colormode="rainbow";
-})
-
 ers.addEventListener("click",()=>{
     colormode="eraser";
 })
+
+Rainbow.addEventListener("click",()=>{
+    if(colormode==="default"||colormode==="eraser"){
+        colormode="rainbow"
+        Rainbow.innerHTML=`🌈<br><br>Switch to Black`;
+    }
+    else if(colormode==="rainbow"||colormode=="eraser"){
+        colormode="default";
+        Rainbow.innerHTML=`🖤<br><br> Switch to Rainbow`;
+    }
+})
+
+
 
 function colorpick(colormode){
     if(colormode==="rainbow"){
@@ -42,6 +56,9 @@ function colorpick(colormode){
     }
     else if(colormode==="eraser"){
         return "white";
+    }
+    else if(colormode === "custom"){
+        return color;  
     }
     else{
         return "black";
