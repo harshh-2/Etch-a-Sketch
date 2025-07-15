@@ -1,5 +1,5 @@
 window.onload=()=>{
-creategrid(5);
+creategrid(16);
 };
 
 let mode="hover";
