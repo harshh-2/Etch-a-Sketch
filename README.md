@@ -5,7 +5,7 @@ Project3-The-Odin-Project
 An interactive pixel drawing web application inspired by the classic Etch A Sketch toy. Users can draw on a customizable grid with different color modes.
 
 ## Demo
-[Live Demo Link](#https://harshh-2.github.io/Etch-a-Sketch/)
+[Live Demo Link](https://harshh-2.github.io/Etch-a-Sketch/)
 
 ## Features
 
